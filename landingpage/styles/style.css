@@ -1,0 +1,138 @@
+/* * {
+    border: 1px red solid;
+} */
+
+#landing {
+    display: flex;
+    flex-direction: column;
+}
+
+#hero {
+    color: #F9FAF8;
+    background-color: #1F2937;
+}
+
+#hero-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    gap: 50px;
+}
+
+.left {
+    display: flex;
+    flex-flow: column wrap;
+    flex: 0 1 530px;
+}
+.main {
+    font-size: 48px;
+    font-weight: bolder;
+    color: #F9FAF8;
+    padding: 5px;
+}
+
+.secondary {
+    font-size: 18px;
+    color: #E5E7EB;
+    padding: 5px;
+}
+
+.button {
+    display: flex;
+    padding: 5px;
+}
+
+.reg {
+    color: #E5E7EB;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #3882F6;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 30px;
+}
+
+.img {
+    display: flex;
+}
+
+#hero-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    gap: 520px;
+}
+
+.header-logo {
+    font-size: 24px;
+    color: #F9FAF8;
+
+    display: flex;
+    /* flex: 0 1 600px; */
+}
+
+.header-link {
+    font-size: 18px;
+    color: #E5E7EB;
+
+    gap: 25px;
+    display: flex;
+}
+
+#information {
+    display: flex;
+    flex-direction: column;
+}
+
+#info-box {
+    display: flex;
+    flex-direction: column;
+}
+
+#info-img {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.img-text {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 0 1 180px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+
+.info-header {
+    font-size: 36px;
+    font-weight: bolder;
+    color: #1F2937;
+    padding-top: 50px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.info-quote {
+    color: #1F2937;
+    font-size: 36px;
+    font-style: italic;
+    background-color: #E5E7EB;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 200px;
+}
+
+.who {
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    align-self: flex-end;
+}
