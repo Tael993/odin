@@ -49,6 +49,9 @@
             though their use-case is already decided by other if-else
             Remove if-else inside functions or outside?
 
+
+
+
 arr = []
 t = 1
 i = 0
@@ -76,3 +79,92 @@ t = +
 if (digits.includes(t))     // false
 if (operators.includes(t))  // true
     arr.push(t)             // arr = ["12", "+"]
+
+
+
+## 1 Arrays
+arr1 = []
+operator = "+"
+
+// First iteration, works
+t = 2
+if (t is digit)        // true
+arr1.push(t)           // arr1 = ["2"]
+
+// Second iteration, wrong way
+t = 2
+if (t is digit)         // true
+arr1.push(t)            // arr1 = ["2", "2"]
+
+// Second iteration, should work
+t = 2
+if (t is digit)         // true
+arr1
+    .splice(
+        0, 
+        1, 
+        arr1[0] 
+        + t
+    )                   // arr1 = ["22"]
+
+// Third iteration, should work
+t = "+"
+if (t is digit)         // false
+if (t is operator)      // true
+arr1.push(t)            // arr1 = ["22", "+"]
+
+// Fourth iteration, works
+t = 3
+if (t is digit)         // true
+arr1.push(t)            // arr1 = ["22", "+", "3"]
+
+// Fifth iteration, should work
+t = 3
+if (t is digit)
+arr1
+    .splice(
+        2,
+        1,
+        arr1[2] 
+        + t
+    )                   // arr1 = ["22", "+", "33"]
+
+// Calculation
+calcluate(arr1[0], arr1[1], arr1[2])
+    leftOperand = arr1[0]
+    rightOperand = arr1[2]
+    operator = arr1[1]
+    if (operator === "+")
+        leftOperand + rightOperand
+
+### Test Code
+function inputRecieved() {
+  document.querySelectorAll("#button").forEach((elem) =>
+    elem.addEventListener("click", (event) => {
+      if (digits.includes(target()) && isEmpty(arr)) {
+        arr.push(target());
+        console.log("if Full Array: " + arr + " Array at index 0: " + arr[0]);
+      }
+      else if (target() === "2" || target() === "3" || target() === "4") {
+        arr.splice(i, 1, arr[i] + target());
+        console.log("else if Full Array: " + arr + " Array at index 0: " + arr[0]);
+      }
+    })
+  );
+}
+
+### Issues
+I haven't found a way to check if the array is empty.
+Getting an answer to that question would make it possible
+to differentiate the ways I want to add something to the array.
+I'll try something else for now.
+
+## Variables
+Saving the target() value in a variable.
+This could work if I'm able to change the variable
+from "1" to "11".
+
+let left;
+let right;
+let operator;
+

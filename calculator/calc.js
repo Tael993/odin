@@ -59,9 +59,12 @@ function calc(lOperand, operator, rOperand) {
   }
 }
 
-function clear(array) {
+function clear(left, right, operator) {
   // Resets array
-  return (array.length = 0);
+  left = '';
+  right = '';
+  operator = '';
+  return left, right, operator;
 }
 
 /* function toDisplay(array, display) {
@@ -94,9 +97,9 @@ function isDigit(array, digit) {
   array.push(digit);
 }
 
-function isMultiDigit(array, sign, index) {
+/* function isMultiDigit(array, sign, index) {
   array.splice(index, 1, array[index] + sign);
-}
+} */
 
 function isOperator(array, operator) {
   // Only updates array with sign if sign is in operator
@@ -108,24 +111,20 @@ function target() {
   return event.target.innerHTML;
 }
 
-function equal(array, newArray) {
+function equal(left, operator, right) {
   // Setting up calculation by returning index of operators
-  let operator;
-  let lOperand;
-  let rOperand;
-  let calculation;
-  let index;
-
-  index = array.findIndex(
-    (element) =>
-      element === "+" || element === "-" || element === "*" || element === "/"
-  );
-  operator = array.find((element) => operators.includes(element));
-  lOperand = index - 1;
-  rOperand = index + 1;
-  calculation = calc(lOperand, operator, rOperand);
-  newArray.push(calculation);
-  return newArray;
+  left = parseInt(left);
+  right = parseInt(right);
+  
+  if (operator === "+") {
+    return add(left, right);
+  } else if (operator === "-") {
+    return subtract(left, right);
+  } else if (operator === "*") {
+    return multiply(left, right);
+  } else {
+    return divide(left, right);
+  }
 }
 
 // function equal could be done with map? or filter?
@@ -137,58 +136,41 @@ const arrEqual = [];
 const display = document.querySelector("#display");
 
 let i = 0;
-let j = 0;
+let left = "";
+let right = "";
+let operator = "";
+let result;
 
 function inputRecieved() {
   document.querySelectorAll("#button").forEach((elem) =>
     elem.addEventListener("click", (event) => {
-      if (j < 1) {
-        if (digits.includes(target(event))) {
-          if (arr.length === 0) {
-            isDigit(arr, target());
-            digitToDisplay(arr, display);
-            } else {
-            console.log("Empty array? " + arr);
-            isMultiDigit(arr, target(event), i);
-            digitToDisplay(arr, display);
-          }
-        } else if (target(event) === "clear") {
-          clear(arr);
-        } else if (target(event) === "=") {
-          equal(arr, arrEqual);
-          toDisplayEqual(arrEqual, display, 0);
-          clear(arrEqual);
-          clear(arr);
-        } else {
-          isOperator(arr, target(event));
-          operatorToDisplay(arr, display);
-          i += 2;
-          j += 2;
+      if (operator.length === 0) {
+        if (digits.includes(target()) && left.length === 0) {
+          left = target();
+          console.log("if Left: " + left);
+        } else if (digits.includes(target())) {
+          left = left.concat(target());
+          console.log("else Left: " + left);
+          console.log(parseInt(left) + 4);
+        } else if (operators.includes(target())) {
+          operator = target();
+          console.log("Left: " + left + " operator: " + operator);
         }
-      } else if (j >= 1) {
-        if (digits.includes(target(event))) {
-          if (arr.length > 0) {
-            console.log("Array after j: " + arr);
-            isDigit(arr, target(event));
-            digitToDisplay(arr, display);
-          } else {
-            isMultiDigit(arr, target(event), i);
-            digitToDisplay(arr, display);
-          }
-        } else if (target(event) === "clear") {
-          clear(arr);
-          i = 0;
-          j = 0;
-        } else if (target(event) === "=") {
-          equal(arr, arrEqual);
-          toDisplayEqual(arrEqual, display, 0);
-          clear(arrEqual);
-          clear(arr);
-        } else {
-          isOperator(arr, target(event));
-          operatorToDisplay(arr, display);
-          i += 2;
-          j += 2;
+      } else if (operator.length != 0) {
+        if (digits.includes(target() && right.length === 0)) {
+          right = target();
+          console.log("if Right: " + right);
+        } else if (digits.includes(target())) {
+          right = right.concat(target());
+          console.log("else Right: " + right);
+        } else if (target() === "=") {
+          result = equal(left, operator, right);
+          console.log("Result: " + result);
+        } else if (target() === "clear") {
+          left = '';
+          right = '';
+          operator = '';
+          console.log("Clear Left: " + left + " Clear Right: " + right + " Clear Operator: " + operator);
         }
       }
     })
