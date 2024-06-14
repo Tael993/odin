@@ -1,0 +1,25 @@
+/* 
+    Use Flexbox to make divs appear as grid
+*/
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#sqr {
+    background-color: green;
+    border-color: black;
+    height: 75px;
+    width: (100% / 16);
+
+    display: flex;
+    flex-basis: 6.25%;
+    flex-grow: 1;
+}
+
+#button {
+    display: flex;
+    width: 75px;
+    height: 75px;
+}
